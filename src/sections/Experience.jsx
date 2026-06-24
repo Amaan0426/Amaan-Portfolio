@@ -171,9 +171,12 @@ export default function Experience() {
         <p className="mb-2 text-sm font-medium tracking-widest uppercase text-accent-gold">
           Where I've Been
         </p>
-        <h2 ref={headingRef} className="flex items-center gap-3 font-heading text-3xl font-bold text-text-primary md:text-5xl lg:text-6xl">
-          <Ship className="h-7 w-7 text-accent-yellow md:h-9 md:w-9" />
-          The Journey <span className="text-accent-yellow">So Far</span>
+        <h2 ref={headingRef} className="font-heading text-3xl font-bold text-text-primary md:text-5xl lg:text-6xl text-center leading-tight">
+          <Ship className="mx-auto mb-2 h-7 w-7 text-accent-yellow md:inline-block md:align-middle md:mr-3 md:mb-0 md:h-9 md:w-9" />
+          <span className="block md:inline-block md:align-middle">
+            <span className="inline-block">The Journey&nbsp;</span>
+            <span className="inline-block text-accent-yellow">So Far</span>
+          </span>
         </h2>
         <div className="mt-4 h-px w-20 bg-accent-gold/50" />
       </div>
@@ -228,7 +231,7 @@ export default function Experience() {
         {isMobile && (
           <div
             ref={mobileShipRef}
-            className="absolute left-4 h-10 w-10 flex items-center justify-center z-30 pointer-events-none lg:hidden"
+            className="absolute left-5 h-30 w-30 flex items-center justify-center z-10 pointer-events-none lg:hidden"
             style={{ top: '0', transform: 'translate(-50%, -50%) rotate(-90deg)' }}
           >
             <img

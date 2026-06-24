@@ -159,9 +159,12 @@ export default function Projects() {
           <p className="mb-2 text-sm font-medium tracking-widest uppercase text-accent-gold">
             Featured Work
           </p>
-          <h2 ref={headingRef} className="flex items-center gap-3 font-heading text-3xl font-bold text-text-primary md:text-5xl lg:text-6xl">
-            <Map className="h-7 w-7 text-accent-yellow md:h-9 md:w-9" />
-            Voyages &amp; <span className="text-accent-yellow">Projects</span>
+          <h2 ref={headingRef} className="font-heading text-3xl font-bold text-text-primary md:text-5xl lg:text-6xl text-center leading-tight">
+            <Map className="mx-auto mb-2 h-7 w-7 text-accent-yellow md:inline-block md:align-middle md:mr-3 md:mb-0 md:h-9 md:w-9" />
+            <span className="block md:inline-block md:align-middle">
+              <span className="inline-block">Voyages &amp;&nbsp;</span>
+              <span className="inline-block text-accent-yellow">Projects</span>
+            </span>
           </h2>
           <div className="mt-4 h-px w-20 bg-accent-gold/50" />
         </div>
