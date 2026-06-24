@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN SYSTEM — "Pirate Voyage" Theme
+   All design tokens are defined here as CSS custom properties
+   and Tailwind v4 theme extensions. Do NOT override these in
+   individual components.
+   ============================================================ */
+
+@theme {
+  /* Color Palette */
+  --color-bg-primary: #0a1628;
+  --color-bg-secondary: #0d1b2a;
+  --color-accent-yellow: #FFC72C;
+  --color-accent-red: #DC2626;
+  --color-accent-gold: #D4AF37;
+  --color-text-primary: #F5F0E6;
+  --color-text-muted: #94a3b8;
+
+  /* Font Families */
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+
+html {
+  /* Removed scroll-behavior: smooth to prevent conflicts with Lenis smooth scroll */
+}
+
+@media (hover: hover) and (min-width: 1024px) {
+
+  body,
+  a,
+  button,
+  select,
+  input,
+  textarea,
+  [role="button"] {
+    cursor: none !important;
+  }
+}
+
+.word-reveal-span {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #060e1a;
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+/* ============================================================
+   SCROLLBAR STYLING
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-yellow);
+}
+
+/* ============================================================
+   SELECTION STYLING
+   ============================================================ */
+
+::selection {
+  background-color: var(--color-accent-yellow);
+  color: var(--color-bg-primary);
+}
+
+/* ============================================================
+   CUSTOM ANIMATIONS
+   ============================================================ */
+
+@utility animate-fade-scale {
+  animation: fadeScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeScale {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ============================================================
+   OCEAN BACKGROUND ANIMATIONS & NOISE OVERLAY
+   ============================================================ */
+
+.animate-ocean-wave-1 {
+  animation: waveFlow 18s linear infinite;
+}
+
+.animate-ocean-wave-2 {
+  animation: waveFlowRev 13s linear infinite;
+}
+
+.animate-ocean-wave-3 {
+  animation: waveFlow 9s linear infinite;
+}
+
+.animate-ocean-wave-4 {
+  animation: waveFlowRevHighlight 11s linear infinite;
+}
+
+@keyframes waveFlow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes waveFlowRev {
+  from {
+    transform: translateX(-25%);
+  }
+  to {
+    transform: translateX(-75%);
+  }
+}
+
+@keyframes waveFlowRevHighlight {
+  from {
+    transform: translateX(-10%);
+  }
+  to {
+    transform: translateX(-60%);
+  }
+}
+
+.hero-grain-overlay {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  top: -5%;
+  left: -5%;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  animation: grainShift 8s steps(10) infinite;
+}
+
+@keyframes grainShift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(-2%, 1%); }
+  30% { transform: translate(1%, -2%); }
+  40% { transform: translate(-1%, 3%); }
+  50% { transform: translate(-2%, 1%); }
+  60% { transform: translate(3%, -1%); }
+  70% { transform: translate(2%, 1%); }
+  80% { transform: translate(-3%, -2%); }
+  90% { transform: translate(1%, 2%); }
+}
